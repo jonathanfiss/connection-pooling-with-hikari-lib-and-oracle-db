@@ -1,1 +1,1 @@
-# connection-pooling-with-hikari-lib-and-oracle-db
+# Connection pooling with hikari lib and oracle db
