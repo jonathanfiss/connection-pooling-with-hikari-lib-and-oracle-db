@@ -1,10 +1,13 @@
 version: '3.8'
-
 services:
-  oracle:
+  oracle-db:
     image: container-registry.oracle.com/database/free:latest
-    ports: 
-      - 1521:1521
-    restart: always
-    # environment:
-    #   ORACLE_PWD: adminadmin
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PWD=admimadmin
+      - ORACLE_CHARACTERSET=AL32UTF8
+    volumes:
+      # - ./docker/oracle-db/data:/opt/oracle/oradata
+      - ./docker/oracle-db/scripts/startup:/opt/oracle/scripts/startup
