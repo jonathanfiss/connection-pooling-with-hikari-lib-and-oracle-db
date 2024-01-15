@@ -1,15 +1,18 @@
-CREATE TABLE PERSON (
-    person_id NUMBER PRIMARY KEY,
+CREATE TABLE C##USER_TEST.PERSON (
+    person_id NUMBER DEFAULT C##USER_TEST.PERSON_SEQ.NEXTVAL PRIMARY KEY,
     username VARCHAR2(50) NOT NULL,
-    name VARCHAR2(100),
+    name VARCHAR2(255),
     social_name VARCHAR2(50),
+    gender VARCHAR2(50),
+    male_name VARCHAR2(255),
+    female_name VARCHAR2(255),
     birth_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE EMAILS (
-    email_id NUMBER PRIMARY KEY,
+CREATE TABLE C##USER_TEST.EMAILS (
+    email_id NUMBER DEFAULT C##USER_TEST.EMAILS_SEQ.NEXTVAL PRIMARY KEY,
     person_id NUMBER,
     status NUMBER(1),
     email VARCHAR2(100) NOT NULL,
@@ -17,11 +20,11 @@ CREATE TABLE EMAILS (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_table_emails_table_person
         FOREIGN KEY (person_id)
-        REFERENCES PERSON(person_id)
+        REFERENCES C##USER_TEST.PERSON(person_id)
 );
 
-CREATE TABLE ADRESSES (
-    adress_id NUMBER PRIMARY KEY,
+CREATE TABLE C##USER_TEST.ADRESSES (
+    adress_id NUMBER DEFAULT C##USER_TEST.ADRESSES_SEQ.NEXTVAL PRIMARY KEY,
     person_id NUMBER,
     status NUMBER(1),
     zipcode VARCHAR2(9) NOT NULL,
@@ -33,11 +36,11 @@ CREATE TABLE ADRESSES (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_table_adresses_table_person
         FOREIGN KEY (person_id)
-        REFERENCES PERSON(person_id)
+        REFERENCES C##USER_TEST.PERSON(person_id)
 );
 
-CREATE TABLE PHONES (
-    phone_id NUMBER PRIMARY KEY,
+CREATE TABLE C##USER_TEST.PHONES (
+    phone_id NUMBER DEFAULT C##USER_TEST.PHONES_SEQ.NEXTVAL PRIMARY KEY,
     person_id NUMBER,
     status NUMBER(1),
     ddd VARCHAR2(3) NOT NULL,
@@ -46,5 +49,5 @@ CREATE TABLE PHONES (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_table_phones_table_person
         FOREIGN KEY (person_id)
-        REFERENCES PERSON(person_id)
+        REFERENCES C##USER_TEST.PERSON(person_id)
 );
