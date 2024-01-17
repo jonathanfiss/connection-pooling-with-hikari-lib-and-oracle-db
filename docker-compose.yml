@@ -9,5 +9,4 @@ services:
       - ORACLE_PWD=admimadmin
       - ORACLE_CHARACTERSET=AL32UTF8
     volumes:
-      # - ./docker/oracle-db/data:/opt/oracle/oradata
       - ./docker/oracle-db/scripts/startup:/opt/oracle/scripts/startup
