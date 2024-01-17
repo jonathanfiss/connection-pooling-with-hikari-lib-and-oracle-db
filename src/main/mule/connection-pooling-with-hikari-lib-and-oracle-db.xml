@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="connection-pooling-with-hikari-lib-and-oracle-dbFlow" doc:id="2c499fe3-c172-4762-8912-b4fd376c9925" >
+		<scheduler doc:name="Scheduler" doc:id="e76fc9d5-45d8-48bc-b725-cf3347feffd9" >
+			<scheduling-strategy >
+				<fixed-frequency timeUnit="DAYS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<db:select doc:name="Select" doc:id="5a631e61-240e-409a-a79d-3387ca0fcdb9" config-ref="Database_Config_hikari">
+			<db:sql ><![CDATA[SELECT PERSON_ID, USERNAME, NAME, SOCIAL_NAME, GENDER, MALE_NAME, FEMALE_NAME, BIRTH_DATE, CREATED_AT, UPDATED_AT FROM "C##USER_TEST".PERSON]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="1be67b60-84c0-4529-89c9-060c2f1e18a7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="9e9f97a7-a8eb-420c-986e-e1fc82622784" message="#[payload]"/>
+	</flow>
+</mule>
