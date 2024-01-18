@@ -5,6 +5,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+![runtime-version]
 
 
 ## Descrição do Projeto
@@ -85,3 +86,4 @@ Informações utilizadas para criação desse projeto.
 [issues-url]: https://github.com/jonathanfiss/connection-pooling-with-hikari-lib-and-oracle-db/issues
 [license-shield]: https://img.shields.io/github/license/jonathanfiss/connection-pooling-with-hikari-lib-and-oracle-db.svg?style=for-the-badge
 [license-url]: https://github.com/jonathanfiss/connection-pooling-with-hikari-lib-and-oracle-db/blob/master/LICENSE.txt
+[runtime-version]: https://img.shields.io/badge/runtime_version-4.5.1-blue?style=for-the-badge
